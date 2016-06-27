@@ -1,0 +1,20 @@
+{
+	"name": "crm-users",
+  	"version": "1.0.0",
+  	"description": "CRM Users",
+  	"main": "server.js",
+  	"author": "Dani Barrios",
+	"repository" :  { 
+		"type" : "git",
+		"url" : "https://github.com/danibarrios/crm-users.git"
+ 	},
+  	"license": "ISC",
+
+  	"dependencies": {
+	    "bcrypt-nodejs": "0.0.3",
+	    "body-parser": "^1.15.2",
+	    "express": "^4.14.0",
+	    "mongoose": "^4.5.1",
+	    "morgan": "^1.7.0"
+  	}
+}
