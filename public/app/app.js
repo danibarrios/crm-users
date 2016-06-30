@@ -30,5 +30,4 @@ angular.module('firstApp', [])
 		// after our computer has been added, clear the form
 		vm.computerData = {};
 	};
-
 });
