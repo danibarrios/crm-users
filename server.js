@@ -24,8 +24,11 @@ app.use( function(req, res, next) {
 app.use(morgan('dev'));
 
 // connect to our database (hosted on modulus.io)
-//mongoose.connect('mongodb://node:noder@novus.modulusmongo.net:27017/Iganiq8o');
 mongoose.connect(config.database);
+
+//set static files location
+//used for request that our frontend will make
+app.use(express.static(__dirname + '/public'));
 
 //ROUTES FOR OUR API
 var apiRouter = require('./app/routes/api.js')(app, express);

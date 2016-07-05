@@ -34,9 +34,7 @@ module.exports = function(app, express) {
 				} else {
 					// if user is found and password is right
 					// create a token
-					var token = jwt.sign(user, superSecret, {
-						expiresInMinutes: 1440 // expires in 24 hours
-					});
+					var token = jwt.sign(user, superSecret);
 					// return the information including token as JSON
 					res.json({
 						success: true,
@@ -75,7 +73,7 @@ module.exports = function(app, express) {
 		}
 	});
 	// test route to make sure everything is working
-	// accessed at GET http://localhost:8080/api
+	// accessed at GET http://localhost:6060/v1/api
 	apiRouter.get('/', function(req, res) {
 		res.json({ message: 'hooray! welcome to our api!' });
 	});
@@ -83,7 +81,7 @@ module.exports = function(app, express) {
 	// on routes that end in /users
 	// ----------------------------------------------------
 	apiRouter.route('/users')
-	// create a user (accessed at POST http://localhost:8080/users)
+		// create a user (accessed at POST http://localhost:6060/v1/api/users)
 		.post(function(req, res) {
 		var user = new User(); // create a new instance of the User model
 		user.name = req.body.name; // set the users name (comes from the request)
@@ -96,7 +94,7 @@ module.exports = function(app, express) {
 			});
 		})
 
-		// get all the users (accessed at GET http://localhost:8080/api/users)
+		// get all the users (accessed at GET http://localhost:6060/v1/api/users)
 		.get(function(req, res) {
 			User.find(function(err, users) {
 				if (err) res.send(err);
