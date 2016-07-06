@@ -9,7 +9,7 @@
 
 	<!-- CSS -->
 	<!-- load bootstrap from CDN and custom CSS -->
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.1/paper/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.6/paper/bootstrap.min.css">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 
@@ -19,24 +19,23 @@
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-animate.js"></script>
 
-	<!-- services -->
-	<script src="app/services/authService.js"></script>
-	<script src="app/services/userService.js"></script>
-
 	<!-- controllers -->
 	<script src="app/controllers/mainCtrl.js"></script>
 	<script src="app/controllers/userCtrl.js"></script>
+
+	<!-- services -->
+	<script src="app/services/authService.js"></script>
+	<script src="app/services/userService.js"></script>
 
 	<!-- main Angular app files -->
 	<script src="app/app.routes.js"></script>
 	<script src="app/app.js"></script>
 </head>
-<body ng-app="userApp">
+<body ng-app="userApp" ng-controller="mainController as main">
 
 <!-- NAVBAR -->
 <header>
-	<div ng-controller="mainController as main">
-		<div class="navbar navbar-inverse" ng-if="main.loggedIn">
+	<div class="navbar navbar-inverse" ng-if="main.loggedIn">
 		<div class="container">
 			<div class="navbar-header">
 				<a href="/" class="navbar-brand"><span class="glyphicon glyphicon-fire text-danger">
@@ -51,9 +50,7 @@
 				<li ng-if="main.loggedIn"><a href="#" ng-click="main.doLogout()">Logout</a></li>
 			</ul>
 		</div>
-	</div>	
 	</div>
-	
 </header>
 
 <main class="container">
