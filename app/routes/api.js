@@ -35,6 +35,9 @@ module.exports = function(app, express) {
 					// if user is found and password is right
 					// create a token
 					var token = jwt.sign(user, superSecret);
+
+					req.decoded = user;
+
 					// return the information including token as JSON
 					res.json({
 						success: true,
@@ -59,6 +62,9 @@ module.exports = function(app, express) {
 					return res.json({ success: false, message: 'Failed to authenticate token.' });
 				} else {
 					// if everything is good, save to request for use in other routes
+					console.log("deco: " + decoded);
+					console.log("success: " + decoded[0]);
+					console.log("message: " + decoded[1]);
 					req.decoded = decoded;
 					next(); // make sure we go to the next routes and don't stop here
 				}
@@ -72,6 +78,7 @@ module.exports = function(app, express) {
 			});
 		}
 	});
+
 	// test route to make sure everything is working
 	// accessed at GET http://localhost:6060/v1/api
 	apiRouter.get('/', function(req, res) {
@@ -144,5 +151,11 @@ module.exports = function(app, express) {
 				res.json({ message: 'Successfully deleted' });
 			});
 		});
+
+	// api endpoint to get user information
+	apiRouter.get('/me', function(req, res) {
+		res.send(req.decoded);
+	});
+
 	return apiRouter;
 };

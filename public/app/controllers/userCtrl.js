@@ -1,12 +1,12 @@
 angular.module('userCtrl', [])
 
-	.controller('userController', function(user) {
+	.controller('userController', function(User) {
 		var vm = this;
 
 		vm.processing = true;
 
-		user.all()
-			.then(function(data) {
+		User.all()
+			.success(function(data) {
 				vm.processing = false;
 
 				vm.users = data;
